@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bucles</title>
+    <style>
+        body { max-width: 720px; margin: 35px auto; padding: 0 16px; font-family: Arial, sans-serif; color: #26364a; background: #f4f7fb; }
+        form { margin: 12px 0 24px; padding: 16px; background: white; border: 1px solid #dce4ee; border-radius: 10px; }
+        input { margin: 4px; padding: 9px; border: 1px solid #c7d2e0; border-radius: 6px; }
+        input[type="button"] { color: white; background: #356bb3; border: 0; cursor: pointer; }
+        input[type="button"]:hover { background: #28568f; }
+    </style>
+</head>
+<body>
+    <h2>Prueba de botón</h2>
+    <p>Utilizando un botón para enviar el texto a la consola</p>
+    <form action="">
+        <input id="valor" type="text">
+        <br>
+        <input id="boton" type="button" value="Enviar">
+    </form>
+
+    <h1>Ejercicio Formulario</h1>
+    <p>Formulario de agregar un profesor</p>
+    <form action = "">
+        <input id="dniProfesor" type="text" placeholder="DNI">
+        <br>
+        <input id="nombreProfesor" type="text" placeholder="Nombre">
+        <br>
+        <input id="apellidosProfesor" type="text" placeholder="Apellidos">
+        <br>
+        <input id="telefonoProfesor" type="tel" placeholder="Teléfono">
+        <br>
+        <input id="btnProfe" type="button" value="Guardar">
+        <input id="btnMostrarProfe" type="button" value="Mostrar">
+    </form>
+
+    <p>Añadir asignatura a un profesor</p>
+    <form>
+        <input id="dniProfe" type="text" placeholder="DNI profe que la imparte">
+        <br>
+        <input id="nombreAsig" type="text" placeholder="Asignatura">
+        <br>
+        <input id="codAsigAsignatura" type="text" placeholder="Código">
+        <br>
+        <input id="btnAsig" type="button" value="Guardar">
+        <input id="btnMostrarAsig" type="button" value="Mostrar">
+    </form>
+    <p>Introduce el codigo de la asignatura para saber que profesor la imparte</p>
+    <form>
+        <input id="codAsigBuscar" type="text" placeholder="Código">
+        <input id="btnBuscar" type="button" value="Buscar profesor">
+    </form>
+    <!-- Añadir botón de guardar formulario y otro de mostrar -->
+</body>
+<script src="codigo.js"></script>
+</html>
