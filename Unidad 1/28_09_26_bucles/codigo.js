@@ -110,7 +110,7 @@ btnMostrarProfe.addEventListener("click",
 var dniAsignaturaProfe = document.getElementById("dniProfe"); 
 var nombreAsig = document.getElementById("nombreAsig"); 
 var codigoAsignaturaInput = document.getElementById("codAsigAsignatura"); 
-
+var dniProfe;
 let btnAsig = document.getElementById("btnAsig");       
 let btnMostrarAsig = document.getElementById("btnMostrarAsig");       
 btnAsig.addEventListener("click", 
@@ -123,6 +123,7 @@ btnAsig.addEventListener("click",
                     }
             }
         }
+        dniProfe = dniAsignaturaProfe.value;
         dniAsignaturaProfe.value = ""
         nombreAsig.value = ""
         codigoAsignaturaInput.value = ""
@@ -133,7 +134,7 @@ btnAsig.addEventListener("click",
 btnMostrarAsig.addEventListener("click",
     function() {
         for(let i = 0; i < datos.length; i++){
-            if (datos[i].dni === dniAsignaturaProfe.value){
+            if (datos[i].dni === dniProfe){
                     console.log(`Profesor: ${datos[i].nombre}, Código Asignatura: ${datos[i].asignatura.codigo}, Nombre Asignatura: ${datos[i].asignatura.nombre} `);
             }
         }
