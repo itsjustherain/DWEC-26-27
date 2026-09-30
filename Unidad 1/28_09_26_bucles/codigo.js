@@ -69,6 +69,7 @@ let btnEnviar = document.getElementById("boton");
 btnEnviar.addEventListener("click",
     function () {
         console.log(input1.value);
+        input1.value = "";
     }
 );
 
@@ -127,6 +128,7 @@ btnAsig.addEventListener("click",
         dniAsignaturaProfe.value = ""
         nombreAsig.value = ""
         codigoAsignaturaInput.value = ""
+        alert("!Asignatura agregada correctamente!");
     }
 )
 
@@ -152,8 +154,9 @@ btnBuscar.addEventListener("click",
         for (let i = 0; i < datos.length; i++) {
             if (datos[i].asignatura.codigo == codigoAsignaturaBuscarInput.value) {
                 console.log(`Nombre Asignatura: ${datos[i].asignatura.nombre}, código asignatura: ${datos[i].asignatura.codigo}, nombre profesor: ${datos[i].nombre}`);
-            } 
+            }
         }
+        codigoAsignaturaBuscarInput.value = "";
     }
 )
 
