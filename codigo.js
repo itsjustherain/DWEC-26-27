@@ -3,6 +3,8 @@ const repositorio = "DWEC-26-27";
 const contenedor = document.getElementById("carpetas");
 const api = `https://api.github.com/repos/${usuario}/${repositorio}/contents`;
 const paginas = `https://${usuario}.github.io/${repositorio}`;
+// Subcarpetas de cada unidad, en el orden en que se muestran
+const TIPOS = ["Apuntes", "Actividades"];
 
 async function obtenerContenido(ruta = "") {
     const respuesta = await fetch(`${api}/${ruta}`);
@@ -51,21 +53,39 @@ async function cargarUnidades() {
                 agregarEnlace(seccion, "Página de la unidad", unidad.path);
             }
 
-            const lista = document.createElement("ul");
-            for (const clase of clases) {
-                const archivosClase = await obtenerContenido(clase.path);
-                if (!archivosClase.some(archivo => archivo.type === "file" && archivo.name.toLowerCase() === "index.html")) {
+            let hayClases = false;
+            for (const tipo of TIPOS) {
+                const carpetaTipo = clases.find(clase => clase.name === tipo);
+                if (!carpetaTipo) {
                     continue;
                 }
 
-                const elemento = document.createElement("li");
-                agregarEnlace(elemento, clase.name.replaceAll("_", " "), clase.path);
-                lista.appendChild(elemento);
+                const lista = document.createElement("ul");
+                const carpetasTipo = (await obtenerContenido(carpetaTipo.path))
+                    .filter(elemento => elemento.type === "dir")
+                    .sort(ordenarPorNombre);
+
+                for (const clase of carpetasTipo) {
+                    const archivosClase = await obtenerContenido(clase.path);
+                    if (!archivosClase.some(archivo => archivo.type === "file" && archivo.name.toLowerCase() === "index.html")) {
+                        continue;
+                    }
+
+                    const elemento = document.createElement("li");
+                    agregarEnlace(elemento, clase.name.replaceAll("_", " "), clase.path);
+                    lista.appendChild(elemento);
+                }
+
+                if (lista.childElementCount > 0) {
+                    const subtitulo = document.createElement("h3");
+                    subtitulo.textContent = tipo;
+                    seccion.appendChild(subtitulo);
+                    seccion.appendChild(lista);
+                    hayClases = true;
+                }
             }
 
-            if (lista.childElementCount > 0) {
-                seccion.appendChild(lista);
-            } else if (!paginaUnidad) {
+            if (!hayClases && !paginaUnidad) {
                 const aviso = document.createElement("p");
                 aviso.textContent = "Todavía no hay páginas de clase publicadas.";
                 seccion.appendChild(aviso);
