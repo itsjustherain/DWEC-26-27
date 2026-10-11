@@ -54,6 +54,8 @@ async function cargarUnidades() {
             }
 
             let hayClases = false;
+            const tipos = document.createElement("div");
+            tipos.className = "tipos";
             for (const tipo of TIPOS) {
                 const carpetaTipo = clases.find(clase => clase.name === tipo);
                 if (!carpetaTipo) {
@@ -77,12 +79,25 @@ async function cargarUnidades() {
                 }
 
                 if (lista.childElementCount > 0) {
+                    const bloque = document.createElement("div");
+                    bloque.className = "tipo";
+                    bloque.dataset.tipo = tipo.toLowerCase();
+
                     const subtitulo = document.createElement("h3");
                     subtitulo.textContent = tipo;
-                    seccion.appendChild(subtitulo);
-                    seccion.appendChild(lista);
+                    const contador = document.createElement("span");
+                    contador.textContent = lista.childElementCount;
+                    subtitulo.appendChild(contador);
+
+                    bloque.appendChild(subtitulo);
+                    bloque.appendChild(lista);
+                    tipos.appendChild(bloque);
                     hayClases = true;
                 }
+            }
+
+            if (hayClases) {
+                seccion.appendChild(tipos);
             }
 
             if (!hayClases && !paginaUnidad) {
