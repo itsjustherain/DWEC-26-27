@@ -1,15 +1,15 @@
-//Codigo
-var cosa = 3;
+// Código
+let cosa = 3;
 console.log(cosa++); // 3 y después incrementa a 4
 cosa = 3;
 console.log(++cosa); // incrementa a 4 y muestra 4
 
-//Ejemplo de bucles
+// Ejemplo de bucles
 function howMany(selectObject) {
     let numberSelected = 0;
     for (let i = 0; i < selectObject.options.length; i++) {
         if (selectObject.options[i].selected) {
-        numberSelected++;
+            numberSelected++;
         }
     }
     return numberSelected;
@@ -20,29 +20,29 @@ btn.addEventListener("click",
     function () {
         alert(
             "Número de opciones seleccionadas: " +
-            howMany(document.selectForm.musicTypes), //document.getEle,entById("musicTypes")
+            howMany(document.selectForm.musicTypes), // document.getElementById("musicTypes")
         );
     }
 );
 
-//Ejemplo mover options de un select a otro
+// Ejemplo mover options de un select a otro
 let boton2 = document.getElementById("btn2");
-boton2.addEventListener("click", 
+boton2.addEventListener("click",
     function () {
         let s1 = document.getElementById("musicTypes");
         let s2 = document.getElementById("vacio");
-        for(let i=s1.options.length - 1;i>=0;i--){
-            if(s1.options[i].selected){
+        for (let i = s1.options.length - 1; i >= 0; i--) {
+            if (s1.options[i].selected) {
                 s2.appendChild(s1.options[i]);
             }
         }
     }
 );
 
-//Tabla de multiplicar
-var num = 2;
+// Tabla de multiplicar
+const num = 2;
 console.log("Tabla del " + num);
-for(let i=0;i<=10;i++){
-    //console.log(num + " x " + i + " = " + (num*i));
-    console.log(`${num} x ${i} = ${num*i}`);
+for (let i = 0; i <= 10; i++) {
+    // console.log(num + " x " + i + " = " + (num*i));
+    console.log(`${num} x ${i} = ${num * i}`);
 }

@@ -1,54 +1,51 @@
 function Car(make, model, year) {
-  this.make = make;
-  this.model = model;
-  this.year = year;
+    this.make = make;
+    this.model = model;
+    this.year = year;
 }
 const myCar = new Car("Eagle", "Talon TSi", 1993);
 console.log(myCar);
 
-// Animal properties and method encapsulation
+// Propiedades y método de un animal (encapsulación)
 const animalProto = {
-  type: "Invertebrates", // Default value of properties
-  displayType() {
-    // Method which will display the type of animal
-    console.log(this.type);
-  },
+    type: "Invertebrates", // Valor por defecto de la propiedad
+    displayType() {
+        // Método que muestra el tipo de animal
+        console.log(this.type);
+    },
 };
 
-// Create a new animal type called `animal`
+// Creo un nuevo animal llamado `animal`
 const animal = Object.create(animalProto);
-animal.displayType(); // Logs: Invertebrates
+animal.displayType(); // Muestra: Invertebrates
 
-// Create a new animal type called fish
+// Creo un nuevo animal llamado `fish`
 const fish = Object.create(animalProto);
 fish.type = "Fishes";
-fish.displayType(); // Logs: Fishes
+fish.displayType(); // Muestra: Fishes
 
-//Inicializar las propiedades de un objeto con una expresion o variable
+// Inicializar las propiedades de un objeto con una expresión o variable
 
-var obj1 = {};
+const obj1 = {};
 obj1.propiedad1 = "valor1";
 console.log(obj1);
-var random = Math.random();
-obj1[random] = "Numero aleatorio";
+let random = Math.random();
+obj1[random] = "Número aleatorio";
 random = Math.random();
-obj1.random = "Otro Numero aleatorio";
+obj1[random] = "Otro número aleatorio";
 console.log(obj1);
 console.log(Object.keys(obj1));
 
-//Definiendo métodos
+// Definiendo métodos
 
-var persona = {
+const persona = {
     nombre: "Pepillo",
     apellidos: "el de los Palotes",
     nacimiento: "01/01/1980",
-    getNombreCompleto: function(){
+    getNombreCompleto: function () {
         return this.nombre + " " + this.apellidos;
     },
-}
+};
 
-function getNombre() {
-    return persona.nombre;
-}
 console.log(persona.getNombreCompleto());
 console.log(Object.keys(persona));
