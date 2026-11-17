@@ -1,0 +1,7 @@
+#cartaRobada {
+    border : 2px solid black;
+    width: 360px;
+    height: 504px;
+    display: inline-block;
+    border-radius: 30px;
+}
