@@ -1,0 +1,309 @@
+:root {
+    --fondo: #f5f7fb;
+    --tarjeta: #ffffff;
+    --borde: #e1e7f0;
+    --texto: #1f2d3f;
+    --suave: #64748b;
+    --acento: #3b6fd4;
+    --acento-claro: #eaf0fc;
+    --naranja: #d4691a;
+    --naranja-claro: #fdf1e6;
+    --sombra: 0 1px 2px rgba(20, 30, 50, 0.05), 0 8px 24px rgba(20, 30, 50, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --fondo: #0e141c;
+        --tarjeta: #161f2b;
+        --borde: #263244;
+        --texto: #e6ecf5;
+        --suave: #94a3b8;
+        --acento: #7aa8f0;
+        --acento-claro: #1d2c45;
+        --naranja: #f2a766;
+        --naranja-claro: #35261a;
+        --sombra: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+    }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 20px 48px;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.5;
+    color: var(--texto);
+    background:
+        radial-gradient(900px 320px at 50% -80px, var(--acento-claro), transparent 70%),
+        var(--fondo);
+    background-repeat: no-repeat;
+}
+
+/* ---------- Cabecera ---------- */
+.cabecera {
+    padding: 72px 0 36px;
+    text-align: center;
+}
+
+.etiqueta {
+    display: inline-block;
+    margin: 0 0 16px;
+    padding: 4px 14px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--acento);
+    background: var(--acento-claro);
+    border-radius: 999px;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(1.9rem, 6vw, 2.9rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+
+h1 span {
+    background: linear-gradient(90deg, var(--acento), var(--naranja));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.subtitulo {
+    margin: 14px 0 0;
+    font-size: 1.05rem;
+    color: var(--suave);
+}
+
+/* ---------- Unidades ---------- */
+#carpetas {
+    display: grid;
+    gap: 24px;
+}
+
+#carpetas section {
+    padding: 28px;
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 18px;
+    box-shadow: var(--sombra);
+}
+
+#carpetas h2 {
+    display: inline-block;
+    margin: 0 14px 18px 0;
+    font-size: 1.35rem;
+    letter-spacing: -0.01em;
+}
+
+#carpetas section > a {
+    display: inline-block;
+    margin-bottom: 18px;
+    padding: 4px 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--acento);
+    text-decoration: none;
+    background: var(--acento-claro);
+    border-radius: 999px;
+    transition: background 0.15s, color 0.15s;
+}
+
+#carpetas section > a:hover,
+#carpetas section > a:focus-visible {
+    color: #fff;
+    background: var(--acento);
+}
+
+#carpetas section > p {
+    margin: 0;
+    color: var(--suave);
+}
+
+/* Apuntes y Actividades, uno junto al otro */
+#carpetas .tipos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+#carpetas .tipo {
+    --color: var(--acento);
+    --color-claro: var(--acento-claro);
+}
+
+#carpetas .tipo[data-tipo="actividades"] {
+    --color: var(--naranja);
+    --color-claro: var(--naranja-claro);
+}
+
+#carpetas h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 12px;
+    padding-bottom: 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color);
+    border-bottom: 2px solid var(--color-claro);
+}
+
+#carpetas h3::before {
+    content: "📖";
+    font-size: 1.1rem;
+    letter-spacing: 0;
+}
+
+#carpetas .tipo[data-tipo="actividades"] h3::before {
+    content: "✏️";
+}
+
+#carpetas h3 span {
+    margin-left: auto;
+    min-width: 24px;
+    padding: 1px 9px;
+    font-size: 0.75rem;
+    text-align: center;
+    letter-spacing: 0;
+    color: var(--color);
+    background: var(--color-claro);
+    border-radius: 999px;
+}
+
+#carpetas ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 6px;
+}
+
+#carpetas li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 12px;
+    color: var(--texto);
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background 0.15s, transform 0.15s;
+}
+
+#carpetas li a::after {
+    content: "→";
+    margin-left: auto;
+    color: var(--color);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.15s, transform 0.15s;
+}
+
+#carpetas li a:hover,
+#carpetas li a:focus-visible {
+    background: var(--color-claro);
+    transform: translateX(2px);
+}
+
+#carpetas li a:hover::after,
+#carpetas li a:focus-visible::after {
+    opacity: 1;
+    transform: none;
+}
+
+#carpetas a:focus-visible {
+    outline: 2px solid var(--acento);
+    outline-offset: 2px;
+}
+
+.fecha {
+    flex: none;
+    min-width: 54px;
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--color);
+    background: var(--color-claro);
+    border-radius: 6px;
+}
+
+li a:hover .fecha,
+li a:focus-visible .fecha {
+    background: var(--tarjeta);
+}
+
+.nombre {
+    font-weight: 500;
+}
+
+/* ---------- Estados ---------- */
+.cargando,
+.error {
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--suave);
+}
+
+.cargando {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.error {
+    color: var(--naranja);
+    background: var(--naranja-claro);
+    border-radius: 14px;
+}
+
+.spinner {
+    width: 18px;
+    height: 18px;
+    border: 3px solid var(--borde);
+    border-top-color: var(--acento);
+    border-radius: 50%;
+    animation: giro 0.8s linear infinite;
+}
+
+@keyframes giro {
+    to { transform: rotate(360deg); }
+}
+
+/* ---------- Pie ---------- */
+.pie {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.pie a {
+    color: var(--suave);
+    text-decoration: none;
+}
+
+.pie a:hover {
+    color: var(--acento);
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .cabecera { padding-top: 48px; }
+    #carpetas section { padding: 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+}
