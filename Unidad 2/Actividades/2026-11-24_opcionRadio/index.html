@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="codigo.js" defer></script>
+    <title>Relacion 3 - Elegir con radio</title>
+</head>
+<body>
+    <main>
+        <form>
+            <fieldset id="caja">
+                <legend>Nivel de experiencia en programación</legend>
+
+                <label><input type="radio" name="nivel" value="Principiante"> Principiante</label>
+                <label><input type="radio" name="nivel" value="Intermedio"> Intermedio</label>
+                <label><input type="radio" name="nivel" value="Avanzado"> Avanzado</label>
+                <label><input type="radio" name="nivel" value="Experto"> Experto</label>
+            </fieldset>
+
+            <button type="button" id="mostrar">Mostrar nivel</button>
+            <button type="button" id="ocultar">Ocultar nivel</button>
+            <p id="resultado"></p>
+        </form>
+    </main>
+</body>
+</html>

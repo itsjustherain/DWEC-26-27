@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dibujo libre mediante eventos Touch</title>
+
+    <!-- Hoja de estilos -->
+    <link rel="stylesheet" href="css/index.css">
+
+    <!-- Código JavaScript -->
+    <script src="js/index.js" defer></script>
+</head>
+
+<body>
+
+    <h1>Dibujo libre con eventos Touch</h1>
+
+    <p>
+        Utiliza el dedo sobre la superficie blanca para realizar
+        un dibujo libre.
+    </p>
+
+    <!-- Zona de dibujo -->
+    <div id="zonaDibujo">
+        <svg id="superficieDibujo"></svg>
+    </div>
+
+    <!-- Botón para borrar -->
+    <button type="button" onclick="borrarDibujo()">
+        Borrar dibujo
+    </button>
+
+</body>
+
+</html>

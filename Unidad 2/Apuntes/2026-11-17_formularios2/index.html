@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de empleado</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 32px 16px;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f3f6fb;
+      color: #243247;
+    }
+    .contenedor {
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 30px;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 8px 28px rgba(25, 45, 75, .10);
+    }
+    h1 { margin: 0 0 8px; color: #183b65; font-size: 26px; }
+    .intro { margin: 0 0 26px; color: #64748b; }
+    .campo { margin-bottom: 18px; }
+    label, legend { display: block; margin-bottom: 7px; font-weight: 600; }
+    input[type="text"], input[type="number"], input[type="date"] {
+      width: 100%;
+      padding: 11px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 7px;
+      font-size: 15px;
+      background: #fff;
+    }
+    input:focus {
+      outline: 2px solid #bfdbfe;
+      border-color: #3978b9;
+    }
+    fieldset { border: 0; padding: 0; margin: 0 0 20px; }
+    .opciones { display: flex; flex-wrap: wrap; gap: 12px 22px; }
+    .opciones label {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin: 0;
+      font-weight: 400;
+    }
+    input[type="radio"], input[type="checkbox"] { accent-color: #245f9e; }
+    button {
+      width: 100%;
+      padding: 13px 18px;
+      border: 0;
+      border-radius: 8px;
+      background: #245f9e;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    button:hover { background: #194b7e; }
+    .nota { margin-top: 14px; color: #64748b; font-size: 12px; }
+    @media (max-width: 480px) {
+      .contenedor { padding: 22px 18px; }
+      h1 { font-size: 23px; }
+    }
+    #errores{
+        font-size: small;
+        color: red;
+        margin-bottom: 20px;
+    }
+    .contenedor-tabla {
+      max-width: 1100px;
+      overflow-x: auto;
+    }
+
+    .contenedor-tabla table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      font-size: 14px;
+    }
+
+    .contenedor-tabla th,
+    .contenedor-tabla td {
+      padding: 15px 16px;
+      text-align: left;
+      border: 1px solid #cbd5e1;
+      white-space: nowrap;
+    }
+
+    .contenedor-tabla thead th {
+      background: #263b53;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .045em;
+      text-transform: uppercase;
+      border-color: #52657a;
+    }
+
+    .contenedor-tabla tbody tr:nth-child(even) {
+      background: #f7f9fc;
+    }
+
+    .contenedor-tabla tbody tr:hover {
+      background: #edf3f8;
+    }
+
+    .contenedor-tabla tbody td {
+      color: #334155;
+    }
+
+    .contenedor-tabla td[colspan] {
+      padding: 28px 16px;
+      color: #64748b;
+      text-align: center;
+      font-style: normal;
+    }
+
+    @media (max-width: 600px) {
+      .contenedor-tabla {
+        padding: 18px 14px;
+      }
+
+      .contenedor-tabla table {
+        font-size: 13px;
+      }
+
+      .contenedor-tabla th,
+      .contenedor-tabla td {
+        padding: 11px 12px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <main class="contenedor">
+    <h1>Formulario de empleado</h1>
+    <p class="intro">Introduce los datos del empleado y pulsa Enviar.</p>
+    <div id="errores" >
+        <!-- aquí irán los mensajes de error de validación -->
+    </div>
+    <form action="#" method="get">
+      <div class="campo">
+        <label for="dni">DNI</label>
+        <input type="text" id="dni" name="dni" placeholder="Ej.: 12345678A"
+               pattern="[0-9]{8}[A-Za-z]" title="Introduce 8 números y una letra"
+               maxlength="9" required>
+      </div>
+
+      <div class="campo">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" autocomplete="given-name" required>
+      </div>
+
+      <div class="campo">
+        <label for="apellidos">Apellidos</label>
+        <input type="text" id="apellidos" name="apellidos" autocomplete="family-name" required>
+      </div>
+
+      <div class="campo">
+        <label for="edad">Edad</label>
+        <input type="number" id="edad" name="edad" min="16" max="110" required>
+      </div>
+
+      <div class="campo">
+        <label for="fechaNacimiento">Fecha de nacimiento</label>
+        <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+      </div>
+
+      <fieldset>
+        <legend>Tipo de empleado</legend>
+        <div class="opciones">
+          <label><input type="radio" name="tipoEmpleado" value="Directivo" required> Directivo</label>
+          <label><input type="radio" name="tipoEmpleado" value="Encargado"> Encargado</label>
+          <label><input type="radio" name="tipoEmpleado" value="Operario"> Operario</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Departamento/s al que pertenece</legend>
+        <div class="opciones">
+          <label><input type="checkbox" name="departamentos" value="Administración"> Administración</label>
+          <label><input type="checkbox" name="departamentos" value="Recursos Humanos"> Recursos Humanos</label>
+          <label><input type="checkbox" name="departamentos" value="Producción"> Producción</label>
+          <label><input type="checkbox" name="departamentos" value="Ventas"> Ventas</label>
+        </div>
+      </fieldset>
+
+      <button type="submit">Enviar</button>
+      <p class="nota">Los campos personales y el tipo de empleado son obligatorios. Puedes seleccionar varios departamentos.</p>
+    </form>
+  </main>
+  <br />
+  <div class="contenedor contenedor-tabla">
+    <table>
+      <thead>
+        <tr>
+          <th>DNI</th>
+          <th>Nombre</th>
+          <th>Apellidos</th>
+          <th>Edad</th>
+          <th>F. Nac</th>
+          <th>Tipo</th>
+          <th>Departamentos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="7">Sin datos todavía</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+<script src="codigo.js"></script>
+</html>
